@@ -28,6 +28,7 @@
 #include "ScaleFactor.h"
 #include "LumiReweightingStandAlone.h"
 #include "RecoilCorrector.h"
+#include "ZmmSF.h"
 #include "RooWorkspace.h"
 #include "RooRealVar.h"
 #include "RooFunctor.h"
@@ -61,6 +62,9 @@ int main(int argc, char** argv) {
     TFile *fZ=new TFile("zpt_weights_btag.root");
     //TFile *fZ=new TFile("zpt_weights_2016_BtoH.root");
     TH2F *histZ=(TH2F*) fZ->Get("zptmass_histo");
+
+    TFile *fM=new TFile("mbtt_weights_2016_BtoH.root");
+    TH1F *histM=(TH1F*) fM->Get("mbtt_histo");
 
     TFile fw("htt_scalefactors_v16_3.root");
     RooWorkspace *w = (RooWorkspace*)fw.Get("w");
@@ -103,6 +107,8 @@ int main(int argc, char** argv) {
     else if (sample=="VBFbbtt20") {xs=0.01*3.782*0.1983; weight=luminosity*xs/ngen;}
     else if (sample=="VBFbbtt40") {xs=0.01*3.782*0.1908; weight=luminosity*xs/ngen;}
     else if (sample=="VBFbbtt60") {xs=0.01*3.782*0.1799; weight=luminosity*xs/ngen;}
+    else if (sample=="WHbbtt40") {xs=0.01*(0.5328+0.840)*0.339; weight=luminosity*xs/ngen;}
+    else if (sample=="ZHbbtt40") {xs=0.01*0.8839*0.242; weight=luminosity*xs/ngen;}
     else if (sample=="ggH125") {xs=48.58*0.0627; weight=luminosity*xs/ngen;}
     else if (sample=="VBF125") {xs=3.782*0.0627; weight=luminosity*xs/ngen;}
     else if (sample=="ggH120") {xs=52.22*0.0698; weight=luminosity*xs/ngen;}
@@ -165,6 +171,9 @@ int main(int argc, char** argv) {
     else if (sample=="ZH110") {xs=1.309*0.0791; weight=luminosity*xs/ngen;}
     else if (sample=="ZH140") {xs=0.6514*0.0360; weight=luminosity*xs/ngen;}*/
     else if (sample=="ZZ") {xs=16.523; weight=luminosity*xs/ngen;}
+    else if (sample=="ZH_LLBB") {xs=0.8839*0.10974*0.5824; weight=luminosity*xs/ngen;}
+    else if (sample=="WminusH_LBB") {xs=0.5328*3*0.108535*0.5824; weight=luminosity*xs/ngen;}
+    else if (sample=="WplusH_LBB") {xs=0.840*3*0.108535*0.5824; weight=luminosity*xs/ngen;}
     else if (sample=="WZ") {xs=47.13; weight=luminosity*xs/ngen;}
     else if (sample=="WW") {xs=118.7; weight=luminosity*xs/ngen;}
     else if (sample=="WGLNu") {xs=489.0; weight=luminosity*xs/ngen;}
@@ -267,6 +276,8 @@ int main(int argc, char** argv) {
     arbre->SetBranchAddress("pt_top2",&pt_top2);
     arbre->SetBranchAddress("genpT",&genpT);
     arbre->SetBranchAddress("genM",&genM);
+    arbre->SetBranchAddress("genEta",&genEta);
+    arbre->SetBranchAddress("genPhi",&genPhi);
     arbre->SetBranchAddress("vispY",&vispY);
     arbre->SetBranchAddress("vispX",&vispX);
     arbre->SetBranchAddress("genpY",&genpY);
@@ -478,35 +489,18 @@ int main(int argc, char** argv) {
     arbre->SetBranchAddress("bflavor_1_JetTimePtEtaDown",&bflavor_1_JetTimePtEtaDown);
     arbre->SetBranchAddress("bflavor_1_JetTimePtEtaUp",&bflavor_1_JetTimePtEtaUp);*/
 
-   //float bins0[] = {0,20,40,60,80,100,120,140,160,180,200,220};//,240,260,280,300,320,340,360,380,400,420,440,460,480};
-   //float bins1[] = {0,20,40,60,80,100,120,140,160,180,200,220};//,240,260,280,300,320,340,360,380,400,420,440,460,480};
-   //float bins0[] = {-150,-130,-110,-90,-70,-50,-30,-10,10,30,50};
-   //float bins1[] = {-150,-130,-110,-90,-70,-50,-30,-10,10,30,50};
-   //float bins0[] = {0,10,20,30,40,50,60,70,80,90,100,110,120};
-   //float bins1[] = {0,10,20,30,40,50,60,70,80,90,100,110,120};
-   //float bins0[] = {0,1,2,3,4,5,6,7};
-   //float bins1[] = {0,1,2,3,4,5,6,7};
-   //float bins0[] = {0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2};
-   //float bins1[] = {0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2};
-   //float bins0[] = {0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250};
-   //float bins1[] = {0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80};
-   //float bins0[] = {0,10,15,20,25,30,35,40,45,50,55,60,70,80,90,100,110,120,130,140,150,200,250};
-   /*float bins0[] = {0,5,10,15,20,25,30,35,40,45,50,55,60,70,80,90,100};
-   float bins1[] = {0,5,10,15,20,25,30,35,40,45,50,55,60,70,80,90,100};
-   float bins2[] = {0,5,10,15,20,25,30,35,40,45,50,55,60,70,80,90,100};
-   float bins3[] = {0,5,10,15,20,25,30,35,40,45,50,55,60,70,80,90,100};*/
-   //float bins2[] = {0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90};
-   //float bins0[] = {0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100};
-   float bins0[] = {0,20,40,60,80,100,120,140,160,180,200};
-   float bins1[] = {0,8,16,24,32,40,48};
-   float bins2[] = {0,8,16,24,32,40,48,56};
-   float bins3[] = {0,8,16,24,32,40,48,56,64,72};
-   /*float bins0[] = {-120,-110,-100,-90,-80,-70,-60,-50,-40,-30,-20,-10,0,10,20,30,40,50,60,70};
-     float bins1[] = {-120,-110,-100,-90,-80,-70,-60,-50,-40,-30,-20,-10,0,10,20,30,40,50,60,70};
-        float bins2[] = {-120,-110,-100,-90,-80,-70,-60,-50,-40,-30,-20,-10,0,10,20,30,40,50,60,70};
-           float bins3[] = {-120,-110,-100,-90,-80,-70,-60,-50,-40,-30,-20,-10,0,10,20,30,40,50,60,70};*/
-   //float bins2[] = {0,7,14,21,28,35,42,49,56,63,70,77,84};
 
+   float bins0[] = {0,20,40,60,80,100,120,140,160,180,200};
+   float bins1[] = {0,8,16,24,32,40,48,65};
+   float bins2[] = {0,8,16,24,32,40,48,56,80};
+   float bins3[] = {0,8,16,24,32,40,48,56,64,72,95};
+
+/*
+   float bins0[] = {0,60,120,180};
+   float bins1[] = {0,8,16,24,32,40,48,65};
+   float bins2[] = {0,8,16,24,32,40,48,56,80};
+   float bins3[] = {0,8,16,24,32,40,48,56,64,95};
+*/
    int  binnum1 = sizeof(bins1)/sizeof(Float_t) - 1;
    int  binnum0 = sizeof(bins0)/sizeof(Float_t) - 1;
    int  binnum2 = sizeof(bins2)/sizeof(Float_t) - 1;
@@ -879,6 +873,21 @@ int main(int argc, char** argv) {
             float mbtt=(myele+mymu+mybjet1).M();
 	    float mtt=(myele+mymu).M();
 
+        if (sample=="ZTT" or sample=="ZLL" or sample=="ZL" or sample=="ZJ" or sample=="DYlow" or sample=="DY1low" or sample=="DY2low" or sample=="DYll" or sample=="DYtt" or sample=="DYlowll" or sample=="DYlowtt" or sample=="DY1lowtt" or sample=="DY1lowll" or sample=="DY2lowll" or sample=="DY2lowtt"){
+             TLorentzVector genZ;
+             genZ.SetPtEtaPhiM(genpT,genEta,genPhi,genM);
+             float genmbtt=(genZ+mybjet1).M();
+             if (genmbtt<40) genmbtt=40;
+             if (genmbtt>600) genmbtt=600;
+             float mbtt_corr=histM->GetBinContent(histM->GetXaxis()->FindBin(genmbtt));
+             if (fabs(tes)!=8) weight2=weight2*mbtt_corr;
+             if (tes==8) // up
+                 weight2=weight2*(1+2.00*(mbtt_corr-1));
+             if (tes==-8) // down
+                 weight2=weight2*(1+0.00*(mbtt_corr-1));
+
+        }
+
 //bool selection_1b = (fabs(mymet.DeltaPhi(myele+mymu))<2.0 and mymet.Pt()<80 and mt1<50 and mt12<50 and mt2<40 and pzeta>-60);
 bool selection_1b = (mt1<40 and mt2<40 and pzeta>-30);
 //selection_1b=true;//
@@ -1008,6 +1017,11 @@ bool selection_2b = (fabs(mymet.DeltaPhi(myele+mymu))<2.0 and mymet.Pt()<100 and
         postfix="_CMS_htt_dyShape_13TeVUp";
     if (tes==-10)
         postfix="_CMS_htt_dyShape_13TeVDown";
+    if (tes==8)
+        postfix="_CMS_mbttShape_13TeVUp";
+    if (tes==-8)
+        postfix="_CMS_mbttShape_13TeVDown";
+
 
     if (nbhist==1) postfixJES[0]=postfix;
     TDirectory *OS0jet_cat1 =fout->mkdir("em_incl_1b");
@@ -1039,21 +1053,33 @@ bool selection_2b = (fabs(mymet.DeltaPhi(myele+mymu))<2.0 and mymet.Pt()<100 and
 	   if (h0_OS[k]->GetBinContent(nn)<=0) h0_OS[k]->SetBinContent(nn,0.00001);
            if (h0_SS[k]->GetBinContent(nn)<=0) h0_SS[k]->SetBinContent(nn,0.00001);
            if (h0_QCD[k]->GetBinContent(nn)<=0) h0_QCD[k]->SetBinContent(nn,0.00001);
+       }
+       for (int nn=1; nn<h1_OS[k]->GetSize()-1; ++nn){
            if (h1_OS[k]->GetBinContent(nn)<=0) h1_OS[k]->SetBinContent(nn,0.00001);
            if (h1_SS[k]->GetBinContent(nn)<=0) h1_SS[k]->SetBinContent(nn,0.00001);
            if (h1_QCD[k]->GetBinContent(nn)<=0) h1_QCD[k]->SetBinContent(nn,0.00001);
+       }
+       for (int nn=1; nn<h2_OS[k]->GetSize()-1; ++nn){
            if (h2_OS[k]->GetBinContent(nn)<=0) h2_OS[k]->SetBinContent(nn,0.00001);
            if (h2_SS[k]->GetBinContent(nn)<=0) h2_SS[k]->SetBinContent(nn,0.00001);
            if (h2_QCD[k]->GetBinContent(nn)<=0) h2_QCD[k]->SetBinContent(nn,0.00001);
+       }
+       for (int nn=1; nn<h3_OS[k]->GetSize()-1; ++nn){
            if (h3_OS[k]->GetBinContent(nn)<=0) h3_OS[k]->SetBinContent(nn,0.00001);
            if (h3_SS[k]->GetBinContent(nn)<=0) h3_SS[k]->SetBinContent(nn,0.00001);
            if (h3_QCD[k]->GetBinContent(nn)<=0) h3_QCD[k]->SetBinContent(nn,0.00001);
+       }
+       for (int nn=1; nn<h4_OS[k]->GetSize()-1; ++nn){
            if (h4_OS[k]->GetBinContent(nn)<=0) h4_OS[k]->SetBinContent(nn,0.00001);
            if (h4_SS[k]->GetBinContent(nn)<=0) h4_SS[k]->SetBinContent(nn,0.00001);
            if (h4_QCD[k]->GetBinContent(nn)<=0) h4_QCD[k]->SetBinContent(nn,0.00001);
+       }
+       for (int nn=1; nn<h5_OS[k]->GetSize()-1; ++nn){
            if (h5_OS[k]->GetBinContent(nn)<=0) h5_OS[k]->SetBinContent(nn,0.00001);
            if (h5_SS[k]->GetBinContent(nn)<=0) h5_SS[k]->SetBinContent(nn,0.00001);
            if (h5_QCD[k]->GetBinContent(nn)<=0) h5_QCD[k]->SetBinContent(nn,0.00001);
+       }
+       for (int nn=1; nn<h6_OS[k]->GetSize()-1; ++nn){
            if (h6_OS[k]->GetBinContent(nn)<=0) h6_OS[k]->SetBinContent(nn,0.00001);
            if (h6_SS[k]->GetBinContent(nn)<=0) h6_SS[k]->SetBinContent(nn,0.00001);
            if (h6_QCD[k]->GetBinContent(nn)<=0) h6_QCD[k]->SetBinContent(nn,0.00001);

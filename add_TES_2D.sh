@@ -1,19 +1,19 @@
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY.root files_up/DYhighttall.root DYtt ZTT 1 
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY.root files_up/DYhighllall.root DYll ZL 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY1.root files_up/DYhightt1.root DYtt ZTT 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY1.root files_up/DYhighll1.root DYll ZL 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY2.root files_up/DYhightt2.root DYtt ZTT 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY2.root files_up/DYhighll2.root DYll ZL 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY3.root files_up/DYhightt3.root DYtt ZTT 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY3.root files_up/DYhighll3.root DYll ZL 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY4.root files_up/DYhightt4.root DYtt ZTT 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY4.root files_up/DYhighll4.root DYll ZL 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DYlow.root files_up/DYlowtt.root DYlowtt ZTT 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DYlow.root files_up/DYlowll.root DYlowll ZL 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY1low.root files_up/DY1lowtt.root DY1lowtt ZTT 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY1low.root files_up/DY1lowll.root DY1lowll ZL 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY2low.root files_up/DY2lowtt.root DY2lowtt ZTT 1
-./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/DY2low.root files_up/DY2lowll.root DY2lowll ZL 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY.root files_up/DYhighttall.root DYtt ZTT 1 
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY.root files_up/DYhighllall.root DYll ZL 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY1.root files_up/DYhightt1.root DYtt ZTT 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY1.root files_up/DYhighll1.root DYll ZL 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY2.root files_up/DYhightt2.root DYtt ZTT 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY2.root files_up/DYhighll2.root DYll ZL 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY3.root files_up/DYhightt3.root DYtt ZTT 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY3.root files_up/DYhighll3.root DYll ZL 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY4.root files_up/DYhightt4.root DYtt ZTT 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY4.root files_up/DYhighll4.root DYll ZL 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DYlow.root files_up/DYlowtt.root DYlowtt ZTT 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DYlow.root files_up/DYlowll.root DYlowll ZL 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY1low.root files_up/DY1lowtt.root DY1lowtt ZTT 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY1low.root files_up/DY1lowll.root DY1lowll ZL 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY2low.root files_up/DY2lowtt.root DY2lowtt ZTT 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/DY2low.root files_up/DY2lowll.root DY2lowll ZL 1
 hadd -f files_up/DYll.root files_up/DYhighllall.root files_up/DYhighll1.root files_up/DYhighll2.root files_up/DYhighll3.root files_up/DYhighll4.root files_up/DY1lowll.root files_up/DY2lowll.root files_up/DYlowll.root
 hadd -f files_up/DYtt.root files_up/DYhighttall.root files_up/DYhightt1.root files_up/DYhightt2.root files_up/DYhightt3.root files_up/DYhightt4.root files_up/DY1lowtt.root files_up/DY2lowtt.root files_up/DYlowtt.root
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/TT.root files_up/TT.root TT TT 1
@@ -53,7 +53,9 @@ hadd -f files_up/ST.root files_up/ST_t_top.root files_up/ST_t_antitop.root files
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/VBFbbtt20.root files_up/VBFbbtt20.root VBFbbtt20 VBFbbtt20 1
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/VBFbbtt40.root files_up/VBFbbtt40.root VBFbbtt40 VBFbbtt40 1
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/VBFbbtt60.root files_up/VBFbbtt60.root VBFbbtt60 VBFbbtt60 1
-hadd -f files_up/signal.root files_up/bbtt15.root files_up/bbtt20.root files_up/bbtt25.root files_up/bbtt30.root files_up/bbtt35.root files_up/bbtt40.root files_up/bbtt45.root files_up/bbtt50.root files_up/bbtt55.root files_up/bbtt60.root
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/WHbbtt40.root files_up/WHbbtt40.root WHbbtt40 WHbbtt40 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_15nov/ZHbbtt40.root files_up/ZHbbtt40.root ZHbbtt40 ZHbbtt40 1
+hadd -f files_up/signal.root files_up/bbtt15.root files_up/bbtt20.root files_up/bbtt25.root files_up/bbtt30.root files_up/bbtt35.root files_up/bbtt40.root files_up/bbtt45.root files_up/bbtt50.root files_up/bbtt55.root files_up/bbtt60.root files_up/VBFbbtt20.root files_up/VBFbbtt40.root files_up/VBFbbtt60.root files_up/WHbbtt40.root files_up/ZHbbtt40.root
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/ggH125.root files_up/ggH125.root ggH125 ggH_htt125 1
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/ggHWW125.root files_up/ggHWW125.root ggHWW125 ggH_hww125 1
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/VBF125.root files_up/VBFH125.root VBF125 qqH_htt125 1
@@ -65,11 +67,15 @@ hadd -f files_up/signal.root files_up/bbtt15.root files_up/bbtt20.root files_up/
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/WminusH125.root files_up/WminusH125.root WminusH125 WH_htt125 1
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/WminusHWW125.root files_up/WminusHWW125.root WminusHWW125 WH_hww125 1
 ./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/ttHnonbb.root files_up/ttHnonbb.root ttHnonbb ttH_nonbb125 1
-hadd -f files_up/SMH.root files_up/ggH125.root files_up/ggHWW125.root files_up/VBFH125.root files_up/VBFHWW125.root files_up/ZH125.root files_up/ZHWW125.root files_up/WplusH125.root files_up/WplusHWW125.root files_up/WminusH125.root files_up/WminusHWW125.root files_up/ttHnonbb.root
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/ZH_LLBB.root files_up/ZH_LLBB.root ZH_LLBB ZH_hbb125 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/WminusH_LBB.root files_up/WminusH_LBB.root WminusH_LBB WH_hbb125 1
+./FinalSelection2D_relaxed.exe /data/ccaillol/BBTT_em_11august/WplusH_LBB.root files_up/WplusH_LBB.root WplusH_LBB WH_hbb125 1
+hadd -f files_up/SMH.root files_up/ggH125.root files_up/ggHWW125.root files_up/VBFH125.root files_up/VBFHWW125.root files_up/ZH125.root files_up/ZHWW125.root files_up/WplusH125.root files_up/WplusHWW125.root files_up/WminusH125.root files_up/WminusHWW125.root files_up/ttHnonbb.root files_up/ZH_LLBB.root files_up/WminusH_LBB.root files_up/WplusH_LBB.root
 
 
 python Create_QCD_2Drelaxed.py --scale up
 python Create_VBF.py --scale up 
+python Create_VH.py --scale up
 
-hadd -f final_up.root files_up/signal.root files_up/W.root files_up/DYtt.root files_up/DYll.root files_up/TT.root files_up/QCD.root files_up/VV.root files_up/ST.root files_up/SMH.root files_up/VBFsignal.root
+hadd -f final_up.root files_up/signal.root files_up/W.root files_up/DYtt.root files_up/DYll.root files_up/TT.root files_up/QCD.root files_up/VV.root files_up/ST.root files_up/SMH.root files_up/VBFsignal.root files_up/VHsignal.root
 
